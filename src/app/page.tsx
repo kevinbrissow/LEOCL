@@ -1,101 +1,52 @@
-import Image from "next/image";
+import { Home as HomeIcon, Search, Library, ChevronLeft, ChevronRight, Play, Shuffle, SkipBack, SkipForward, Repeat, Mic2, LayoutList, Laptop2, Volume, Maximize2, DivideCircle, Plus} from 'lucide-react'
+import Image from 'next/image'
+import { Sidebar } from '../app/components/Sidebar'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="h-screen flex bg-black">
+      <Sidebar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="flex flex-col flex-1">
+        <main className="bg-zinc-900 p-4 rounded-md m-3 flex-1">
+          <div className="gap-6 mt-2">
+            <div>
+              <a href="#" className="flex items-center gap-16">
+              <Image src="/kevin.JPG" className="ml-5 rounded-full transform transition-transform duration-300 hover:scale-110" width={250} height={250} alt="Perfil" />              
+              <div className="flex flex-col">
+                  <h1 className="text-7xl font-semibold">Kevin Brissow</h1>
+                  <h2 className="text-5xl font-semibold">Desenvolvedor Full Stack</h2>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-col gap-4"> 
+            <h1 className="font-semibold text-2xl">Sobre mim</h1>
+            <h2 className="text-2xl w-1/2">
+              Olá! Sou Kevin Brissow, desenvolvedor full stack com 25 anos, Bacharel em Ciência da Computação pela URI. Minha trajetória inclui um estágio na área pública, onde tive a oportunidade de trabalhar com gestão de estoques, manutenção de sistemas, redes e suporte técnico (remoto e presencial), desenvolvendo habilidades valiosas em resolução de problemas e atendimento eficaz.
+            </h2>
+          </div>
+        </main>
+
+        <aside className="bg-black p-4 rounded-md m-3 h-32 overflow-hidden relative">
+          <div className="absolute inset-0 flex animate-marquee gap-6">
+            <Image src="/c-sharp.png" alt="C#" width={60} height={20} objectFit="contain" />
+            <Image src="/pacman.png" alt="Pacman" width={100} height={100} objectFit="contain" />
+          </div>
+        </aside>
+      </div>
+
+      <div className="fixed right-0 top-2/4 w-72 h-[500px] bg-slate-800 rounded-3xl shadow-lg mr-14 transform transition-transform duration-300 hover:translate-y-[-20px] hover:scale-105">
+        <div className="flex flex-col h-full justify-between">
+          <div className="flex justify-center mt-4">
+            <div className="w-64 h-96 bg-black rounded-2xl">
+            </div>
+          </div>
+          <div className="w-full flex justify-center mb-4">
+            <div className="w-12 h-12 bg-black rounded-full mb-2"></div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
-  );
+  )
 }
