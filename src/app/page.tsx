@@ -1,52 +1,118 @@
-import { Home as HomeIcon, Search, Library, ChevronLeft, ChevronRight, Play, Shuffle, SkipBack, SkipForward, Repeat, Mic2, LayoutList, Laptop2, Volume, Maximize2, DivideCircle, Plus} from 'lucide-react'
-import Image from 'next/image'
-import { Sidebar } from '../app/components/Sidebar'
+"use client";
 
-export default function Home() {
+import React, { useState, useEffect } from "react";
+//import { Home, Info, Users } from "lucide-react";
+import Image from 'next/image';
+
+import { Instagram, Facebook, } from 'lucide-react'; 
+
+const Navbar = () => {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      setVisible(false);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => setVisible(true), 1000);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timeout);
+    };
+  }, []);
+
   return (
-    <div className="h-screen flex bg-black">
-      <Sidebar />
+<nav className={`fixed top-0 left-0 w-full bg-black bg-opacity-85 text-white p-2 flex items-center transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"} shadow-lg`}>
+  {/* Logo e descrição */}
+  <div className="flex items-center gap-3 w-1/3 justify-start">
+    <Image src="/LEO_LOGO_CL.png" alt="Logo" width={80} height={80} />
+    <span className="whitespace-nowrap text-2xl font-bold">LEO CERRO LARGO</span>
+  </div>
 
-      <div className="flex flex-col flex-1">
-        <main className="bg-zinc-900 p-4 rounded-md m-3 flex-1">
-          <div className="gap-6 mt-2">
-            <div>
-              <a href="#" className="flex items-center gap-16">
-              <Image src="/kevin.JPG" className="ml-5 rounded-full transform transition-transform duration-300 hover:scale-110" width={250} height={250} alt="Perfil" />              
-              <div className="flex flex-col">
-                  <h1 className="text-7xl font-semibold">Kevin Brissow</h1>
-                  <h2 className="text-5xl font-semibold">Desenvolvedor Full Stack</h2>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="mt-10 flex flex-col gap-4"> 
-            <h1 className="font-semibold text-2xl">Sobre mim</h1>
-            <h2 className="text-2xl w-1/2">
-              Olá! Sou Kevin Brissow, desenvolvedor full stack com 25 anos, Bacharel em Ciência da Computação pela URI. Minha trajetória inclui um estágio na área pública, onde tive a oportunidade de trabalhar com gestão de estoques, manutenção de sistemas, redes e suporte técnico (remoto e presencial), desenvolvendo habilidades valiosas em resolução de problemas e atendimento eficaz.
-            </h2>
-          </div>
-        </main>
+  {/* Links de navegação */}
+  <div className="flex justify-center items-center w-1/3">
+    <ul className="flex gap-6">
+      <li className="cursor-pointer">Início</li>
+      <li className="cursor-pointer">Sobre</li>
+      <li className="cursor-pointer">Contato</li>
+    </ul>
+  </div>
 
-        <aside className="bg-black p-4 rounded-md m-3 h-32 overflow-hidden relative">
-          <div className="absolute inset-0 flex animate-marquee gap-6">
-            <Image src="/c-sharp.png" alt="C#" width={60} height={20} objectFit="contain" />
-            <Image src="/pacman.png" alt="Pacman" width={100} height={100} objectFit="contain" />
-          </div>
-        </aside>
-      </div>
+  {/* Ícones das redes sociais */}
+  <div className="flex gap-4 w-1/3 justify-end pr-5">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white">
+      <Instagram size={24} />
+    </a>
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">
+      <Facebook size={24} />
+    </a>
+  </div>
+</nav>
+  );
+};
 
-      <div className="fixed right-0 top-2/4 w-72 h-[500px] bg-slate-800 rounded-3xl shadow-lg mr-14 transform transition-transform duration-300 hover:translate-y-[-20px] hover:scale-105">
-        <div className="flex flex-col h-full justify-between">
-          <div className="flex justify-center mt-4">
-            <div className="w-64 h-96 bg-black rounded-2xl">
-            </div>
-          </div>
-          <div className="w-full flex justify-center mb-4">
-            <div className="w-12 h-12 bg-black rounded-full mb-2"></div>
-          </div>
-        </div>
-      </div>
+
+
+const About = () => {
+  return (
+    <section className="p-16 mx-auto text-center bg-slate-600 py-44">
+      <h2 className="text-4xl font-bold text-white">SEJA BEM VINDO AO LEO CLUBE CERRO LARGO</h2>
+      <p className="mt-6 text-xl text-white">
+        O LEO Clube é uma organização de jovens voluntários que promovem ações sociais para transformar a comunidade.
+      </p>
+    </section>
+  );
+};
+
+const AboutSection2 = () => {
+  return (
+    <section className="p-8 max-w-4xl mx-auto text-center">
+      <h2 className="text-3xl font-bold text-blue-700">Sobre o LEO Clube</h2>
+      <p className="mt-4 text-lg text-gray-700">
+        O LEO Clube é uma organização de jovens voluntários que promovem ações sociais para transformar a comunidade.
+      </p>
+    </section>
+  );
+};
+
+const AboutSection = () => {
+  return (
+    <section className="p-8 max-w-4xl mx-auto text-center">
+      <h2 className="text-3xl font-bold text-blue-700">Sobre o LEO Clube</h2>
+      <p className="mt-4 text-lg text-gray-700">
+        O LEO Clube é uma organização de jovens voluntários que promovem ações sociais para transformar a comunidade.
+      </p>
+    </section>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-800 text-white text-center p-4 mt-8">
+      <p>&copy; 2025 LEO Clube - Todos os direitos reservados.</p>
+    </footer>
+  );
+};
+
+const HomePage = () => {
+  return (
+    <div className="bg-white text-white min-h-screen">
+      <Navbar />
+      <About />
+      <AboutSection />
+      <AboutSection2 />
+      <AboutSection />
+      <AboutSection />
+      <AboutSection />
+      <AboutSection />
+
+      <Footer />
     </div>
-  )
-}
+  );
+};
+
+
+export default HomePage;
