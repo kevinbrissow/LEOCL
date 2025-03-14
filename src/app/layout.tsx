@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Listen to music.",
+  title: "LEO CL",
+  description: "LEO CLUBE CERRO LARGO",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-zinc-900 text-zinc-50">{children}</body>
+      <body className="bg-white text-zinc-50">{children}</body>
     </html>
   );
 }
